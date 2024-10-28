@@ -9,6 +9,7 @@ TagManager:
   - waterLevel
   - ElectricBrake
   - Water
+  - Gate
   layers:
   - Default
   - TransparentFX
