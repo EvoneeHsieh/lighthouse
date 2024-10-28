@@ -10,6 +10,8 @@ public class Lazer : MonoBehaviour
     [SerializeField] private Transform startPoint; // Assign this in the inspector
     [SerializeField] private Camera playerCamera; // Main camera reference
 
+    private ChargeManager currentChargeManager;
+
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
@@ -69,8 +71,17 @@ public class Lazer : MonoBehaviour
                 // 如果碰到特定物件，執行相應操作
                 if (hit.transform.CompareTag("EnergyCharge"))
                 {
-                    GameManager.instance.StartCharging(); // 觸發充能
+                    ChargeManager chargeManager = hit.transform.GetComponent<ChargeManager>(); // 獲取 EnergyCharge 的 ChargeManager 組件
+                    if (chargeManager != null)
+                    {
+                        GameManager.instance.StartCharging(chargeManager); // 傳遞獲取的 ChargeManager 實例
+                    }
+                    else
+                    {
+                        Debug.LogError("ChargeManager not found on the EnergyCharge object.");
+                    }
                 }
+
                 else if (hit.transform.CompareTag("waterLevel"))
                 {
                     GameManager.instance.HitWaterLevel(); // 觸發水位變化

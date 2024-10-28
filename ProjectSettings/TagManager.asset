@@ -8,6 +8,7 @@ TagManager:
   - EnergyCharge
   - waterLevel
   - ElectricBrake
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement; // Add this for scene management
 
 public class GameManager : MonoBehaviour
 {
@@ -8,17 +10,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Canvas chargeCompleteCanvas;
     [SerializeField] private Canvas waterLevelDownCanvas;
+    [SerializeField] private Canvas playerTouchWater;
+    [SerializeField] private TextMeshProUGUI energyCounterText; // 更新為 TextMeshProUGUI 元件
+    [SerializeField] private int maxEnergy = 2;
 
-    public bool isLazerActive = true; // 全局控制雷射的開關
+    [SerializeField] private GameObject gate; // Reference to the gate GameObject
+    [SerializeField] private Material gateOpen; // Material for the open gate
+    private bool gateChargeMax = false;
 
+    public bool isLazerActive = false;
     private float chargeTimer = 0f;
-    private bool isCharging = false; // 是否正在充能
-    private float chargeTime = 1f; // 充能所需時間
-    private bool chargeCanvasDisplayed = false; // 標記是否顯示了充能Canvas
+    private bool isCharging = false;
+    private float chargeTime = 1f;
+    public bool chargeCanvasDisplayed = false;
+    public int totalEnergy = 0;
+    public Material chargedMaterial; // Material to switch on charge
 
-    [SerializeField] private Transform WaterObject; // 水位的Plane物件
-
-    private bool isWaterLevelHit = false; // 是否碰到水位物體
+    [SerializeField] private Transform WaterObject;
+    private ChargeManager currentChargeManager;
 
     private void Awake()
     {
@@ -28,7 +37,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // 保證單例模式
+            Destroy(gameObject);
         }
     }
 
@@ -36,72 +45,98 @@ public class GameManager : MonoBehaviour
     {
         chargeCompleteCanvas.enabled = false;
         waterLevelDownCanvas.enabled = false;
+        playerTouchWater.enabled = false;
+        UpdateEnergyCounterUI(); // 初始化顯示
     }
 
-    public void StartCharging()
+    public void StartCharging(ChargeManager chargeManager)
     {
+        if (isCharging || chargeManager.isCharged) return;
+
+        currentChargeManager = chargeManager;
         isCharging = true;
         chargeTimer = 0f;
-        chargeCanvasDisplayed = false;
+    }
+
+    private void Update()
+    {
+        if (isCharging)
+        {
+            chargeTimer += Time.deltaTime;
+            if (chargeTimer >= chargeTime && !chargeCanvasDisplayed)
+            {
+                ShowChargeCompleteCanvas();
+                RegisterCharge(); // 將註冊充能移到這裡
+                isCharging = false;
+                chargeTimer = 0f;
+            }
+        }
+
+        // Check if the gateChargeMax condition is true
+        if (gateChargeMax)
+        {
+            // Change the gate material to gateOpen
+            gate.GetComponent<Renderer>().material = gateOpen; // Ensure gate has a Renderer component
+            // Optionally, you could disable this check after setting the material
+            gateChargeMax = false; // Reset to avoid repeated changes
+        }
+    }
+
+    private void ShowChargeCompleteCanvas(float duration = 1f)
+    {
+        chargeCompleteCanvas.enabled = true;
+        chargeCanvasDisplayed = true;
+        Invoke("HideChargeCompleteCanvas", duration);
+    }
+
+    private void HideChargeCompleteCanvas()
+    {
+        chargeCompleteCanvas.enabled = false;
+        chargeCanvasDisplayed = false; // Reset canvas display state
+    }
+
+    private void RegisterCharge()
+    {
+        if (currentChargeManager != null && !currentChargeManager.isCharged)
+        {
+            currentChargeManager.SetCharged(chargedMaterial);
+            totalEnergy++;
+            UpdateEnergyCounterUI();
+        }
+
+        if (totalEnergy >= maxEnergy)
+        {
+            Debug.Log("Max Energy");
+            isCharging = false; // Stop charging
+            gateChargeMax = true; // Set gate charge max to true
+        }
+    }
+
+    private void UpdateEnergyCounterUI()
+    {
+        energyCounterText.text = $"Energy({totalEnergy}/{maxEnergy})";
     }
 
     public void HitWaterLevel()
     {
-        Debug.Log("hitwaterlevel");
-        isWaterLevelHit = true; // 標記水位被擊中
-
-        // 獲取水位物件的Animator組件並觸發動畫
         Animator waterAnimator = WaterObject.GetComponent<Animator>();
         if (waterAnimator != null)
         {
-            waterAnimator.SetTrigger("StartLowering"); // 設定觸發條件
+            waterAnimator.SetTrigger("StartLowering");
         }
-
-        // 等待1秒再觸發動畫
         StartCoroutine(WaitAndShowCanvas(1f));
     }
 
     private IEnumerator WaitAndShowCanvas(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        ShowWaterLevelDownCanvas(); // 顯示水位下降的Canvas
+        ShowWaterLevelDownCanvas();
     }
 
-
-    private void Update()
-    {
-        // 處理充能邏輯
-        if (isCharging)
-        {
-            chargeTimer += Time.deltaTime;
-            Debug.Log("Charge Timer: " + chargeTimer);
-
-            if (chargeTimer >= chargeTime && !chargeCanvasDisplayed)
-            {
-                ShowChargeCompleteCanvas(); // 顯示充能完成的Canvas
-                chargeCanvasDisplayed = true;
-                isCharging = false;
-                chargeTimer = 0f;
-            }
-        }
-    }
-
-    public void ShowChargeCompleteCanvas(float duration = 1f)
-    {
-        chargeCompleteCanvas.enabled = true;
-        Invoke("HideChargeCompleteCanvas", duration);
-    }
-
-    // 在這裡用動畫事件來顯示水位下降的Canvas
     public void ShowWaterLevelDownCanvas(float duration = 1f)
     {
         waterLevelDownCanvas.enabled = true;
         Invoke("HideWaterLevelDownCanvas", duration);
-    }
-
-    private void HideChargeCompleteCanvas()
-    {
-        chargeCompleteCanvas.enabled = false;
     }
 
     private void HideWaterLevelDownCanvas()
@@ -109,9 +144,21 @@ public class GameManager : MonoBehaviour
         waterLevelDownCanvas.enabled = false;
     }
 
-    // 切換雷射和手電筒
     public void ToggleLaserAndFlashlight()
     {
         isLazerActive = !isLazerActive;
+    }
+
+    public void PlayerTouchWater()
+    {
+        Debug.Log("You died");
+        playerTouchWater.enabled = true;
+        Time.timeScale = 0;
+    }
+
+    // Method to be called when the player collides with the gate
+    public void OnPlayerTouchGate()
+    {
+        SceneManager.LoadScene("Test1"); // Load the scene named "Test1"
     }
 }

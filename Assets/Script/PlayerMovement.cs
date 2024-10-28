@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -67,4 +68,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 向上施加力使角色跳起
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name); // 檢查碰撞的物件名稱
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            GameManager.instance.PlayerTouchWater();
+        }
+    }
+
+
 }
