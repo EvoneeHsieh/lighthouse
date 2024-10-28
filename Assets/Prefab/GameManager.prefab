@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7191787967362440830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5762277132462165995}
+  - component: {fileID: 4068028009169814133}
+  - component: {fileID: 3758739587583759364}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5762277132462165995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191787967362440830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.5, y: 19, z: -11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4068028009169814133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191787967362440830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff9ed89d2f14534cbaaa97f2f2a94ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera_1: {fileID: 0}
+  camera_2: {fileID: 0}
+  manager: 0
+--- !u!114 &3758739587583759364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191787967362440830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae62562a00f43940a43d4a7266d3dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeCompleteCanvas: {fileID: 0}
+  waterLevelDownCanvas: {fileID: 0}
+  playerTouchWater: {fileID: 0}
+  energyCounterText: {fileID: 0}
+  maxEnergy: 2
+  gate: {fileID: 0}
+  gateOpen: {fileID: 2100000, guid: 13159a1d24686bc4f997f19752bbf20d, type: 2}
+  isLazerActive: 1
+  chargeCanvasDisplayed: 0
+  totalEnergy: 0
+  chargedMaterial: {fileID: 2100000, guid: 473ea75630aacd1418a353dc63570a30, type: 2}
+  WaterObject: {fileID: 0}
