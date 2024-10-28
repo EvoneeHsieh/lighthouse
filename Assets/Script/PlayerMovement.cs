@@ -71,10 +71,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name); // 檢查碰撞的物件名稱
+        //Debug.Log("Collided with: " + collision.gameObject.name); // 檢查碰撞的物件名稱
         if (collision.gameObject.CompareTag("Water"))
         {
             GameManager.instance.PlayerTouchWater();
+        }
+        if (collision.gameObject.CompareTag("Gate"))
+        {
+            GameManager.instance.OnPlayerTouchGate();
         }
     }
 
