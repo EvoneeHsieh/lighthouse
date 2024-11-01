@@ -17,10 +17,10 @@ public class CameraSwitch : MonoBehaviour
     private void Update()
     {
         // ÀË´ú E Áä
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ManageCamera();
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    ManageCamera();
+        //}
     }
 
     public void ManageCamera()

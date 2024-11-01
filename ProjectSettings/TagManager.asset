@@ -7,7 +7,6 @@ TagManager:
   - Mirror
   - EnergyCharge
   - waterLevel
-  - ElectricBrake
   - Water
   - Gate
   layers:
@@ -18,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Floor
-  - 
+  - RenderAbove
   - 
   - 
   - 
