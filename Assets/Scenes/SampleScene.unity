@@ -1877,7 +1877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &870785927
 Light:
   m_ObjectHideFlags: 0
@@ -4204,19 +4204,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4228,7 +4228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7830237882718555023, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Name
@@ -4241,10 +4241,6 @@ PrefabInstance:
     - target: {fileID: 8449316778380861057, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8449316778380861057, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5563,7 +5559,7 @@ GameObject:
   - component: {fileID: 7446296859426417683}
   - component: {fileID: 8991101579007981963}
   - component: {fileID: 4157472453475729181}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
