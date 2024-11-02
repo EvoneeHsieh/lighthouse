@@ -1877,7 +1877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &870785927
 Light:
   m_ObjectHideFlags: 0
@@ -4180,15 +4180,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3229526419644659859, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3851471154785092429, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734381083411815708, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7485342613446283573, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4236,11 +4236,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830237882718555023, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8449316778380861057, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8449316778380861057, guid: 48d3bab50fe93d9449f707c34b315090, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4863,7 +4867,7 @@ GameObject:
   - component: {fileID: 4064055615979991037}
   - component: {fileID: 965774490176903495}
   - component: {fileID: 96552174667121351}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5239,7 +5243,7 @@ GameObject:
   - component: {fileID: 9089363569416108075}
   - component: {fileID: 5107941178977780161}
   - component: {fileID: 3855026412215091675}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Modle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5284,7 +5288,7 @@ GameObject:
   - component: {fileID: 2921965403080953204}
   - component: {fileID: 454587165690153117}
   - component: {fileID: 835508093553745634}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5522,7 +5526,7 @@ GameObject:
   - component: {fileID: 6495825716722461603}
   - component: {fileID: 2482296922766918131}
   - component: {fileID: 1642284848546987952}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -5538,7 +5542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6937990616834927670}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5559,7 +5563,7 @@ GameObject:
   - component: {fileID: 7446296859426417683}
   - component: {fileID: 8991101579007981963}
   - component: {fileID: 4157472453475729181}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
