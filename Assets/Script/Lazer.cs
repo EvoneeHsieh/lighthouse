@@ -6,7 +6,7 @@ public class Lazer : MonoBehaviour
 {
     public float maxLaserLength = 50f;
     public int maxBounces = 5; // 最大反彈次數
-    private LineRenderer lr;
+    public LineRenderer lr;
     [SerializeField] private Transform startPoint; // Assign this in the inspector
     [SerializeField] private Camera playerCamera; // Main camera reference
 
@@ -28,13 +28,10 @@ public class Lazer : MonoBehaviour
         {
             GameManager.instance.ToggleLaserAndFlashlight();
             lr.enabled = GameManager.instance.isLazerActive;
-        }
-
-        // 在這裡調用雷射發射的方法
-        if (GameManager.instance.isLazerActive)
-        {
-            Vector3 direction = playerCamera.transform.forward; // 將雷射方向設為相機面對的方向
-            CastLaser(startPoint.position, direction);
+            if (lr.enabled)
+            {
+                CastLaser(startPoint.position, playerCamera.transform.forward);
+            }
         }
     }
 
@@ -42,7 +39,7 @@ public class Lazer : MonoBehaviour
     {
         if (!GameManager.instance.isLazerActive) return; // 如果雷射關閉，直接返回
 
-        lr.positionCount = maxBounces + 1; // +1 是為了包含起始點
+        lr.positionCount = 1; // +1 是為了包含起始點
         lr.SetPosition(0, startPoint.position);
         float totalDistance = 0f;
 
@@ -51,22 +48,14 @@ public class Lazer : MonoBehaviour
             Ray ray = new Ray(position, direction);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 300))
+            if (Physics.Raycast(ray, out hit, maxLaserLength - totalDistance))
             {
                 float distance = Vector3.Distance(position, hit.point);
                 totalDistance += distance; // 計算總長度
 
-                if (totalDistance > maxLaserLength) // 如果超過最大長度
-                {
-                    Vector3 adjustedPoint = position + direction.normalized * (maxLaserLength - (totalDistance - distance));
-                    lr.positionCount = i + 2; // 更新折線點數量
-                    lr.SetPosition(i + 1, adjustedPoint);
-                    break;
-                }
-
-                position = hit.point;
                 lr.positionCount = i + 2;
                 lr.SetPosition(i + 1, hit.point);
+                position = hit.point;
 
                 // 如果碰到特定物件，執行相應操作
                 if (hit.transform.CompareTag("EnergyCharge"))
