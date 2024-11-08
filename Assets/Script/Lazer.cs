@@ -10,6 +10,8 @@ public class Lazer : MonoBehaviour
     [SerializeField] private Transform startPoint; // Assign this in the inspector
     [SerializeField] private Camera playerCamera; // Main camera reference
 
+    private bool isLaserTrackingActive = false;
+
     private ChargeManager currentChargeManager;
 
     private void Start()
@@ -21,19 +23,33 @@ public class Lazer : MonoBehaviour
         playerCamera = Camera.main; // Get the main camera reference
     }
 
-    private void Update()
+    void Update()
     {
         // Q 鍵切換雷射和手電筒
         if (Input.GetKeyDown(KeyCode.Q))
         {
             GameManager.instance.ToggleLaserAndFlashlight();
             lr.enabled = GameManager.instance.isLazerActive;
-            if (lr.enabled)
+
+            // 如果雷射被啟動，啟動方向追蹤
+            isLaserTrackingActive = GameManager.instance.isLazerActive;
+
+            // 按下Q鍵時立即射出雷射
+            if (isLaserTrackingActive)
             {
-                CastLaser(startPoint.position, playerCamera.transform.forward);
+                Vector3 direction = playerCamera.transform.forward;
+                CastLaser(startPoint.position, direction);
             }
         }
+
+        // 當isLaserTrackingActive為true時才會在每幀更新雷射方向
+        if (isLaserTrackingActive)
+        {
+            Vector3 direction = playerCamera.transform.forward;
+            CastLaser(startPoint.position, direction);
+        }
     }
+
 
     public void CastLaser(Vector3 position, Vector3 direction)
     {
