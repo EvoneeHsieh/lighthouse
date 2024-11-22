@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 561fe9ec476b1354791ad347f04993b8
+guid: eabe015ada15cf044bf048b22f944d06
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,10 +7,10 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
+      name: No Name
     second: {fileID: 2100000, guid: 4ad5317e680f2b346bde50619bdd1c5c, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -50,7 +50,7 @@ ModelImporter:
     importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
