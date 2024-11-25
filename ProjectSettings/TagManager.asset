@@ -9,6 +9,7 @@ TagManager:
   - waterLevel
   - Water
   - Gate
+  - Climbable
   layers:
   - Default
   - TransparentFX
