@@ -20,8 +20,8 @@ public class ClimbControl : MonoBehaviour
         if (other.CompareTag("Climbable"))
         {
             // 禁止左手和右手抓取物體
-            leftOVRGrabber.m_parentHeldObject = false;
-            rightOVRGrabber.m_parentHeldObject = false;
+            //leftOVRGrabber.m_parentHeldObject = false;
+            //rightOVRGrabber.m_parentHeldObject = false;
 
             climbableObject = other.gameObject;
             Debug.Log("Entered climbable object: " + other.gameObject.name);
@@ -42,11 +42,11 @@ public class ClimbControl : MonoBehaviour
             // 啟用抓取物體，禁用爬梯
             if (other.transform.IsChildOf(leftHandTransform))
             {
-                leftOVRGrabber.m_parentHeldObject = true; // 允許左手抓取
+                //leftOVRGrabber.m_parentHeldObject = true; // 允許左手抓取
             }
             else if (other.transform.IsChildOf(rightHandTransform))
             {
-                rightOVRGrabber.m_parentHeldObject = true; // 允許右手抓取
+                //rightOVRGrabber.m_parentHeldObject = true; // 允許右手抓取
             }
 
             grabbingObject = other.gameObject;
@@ -74,8 +74,8 @@ public class ClimbControl : MonoBehaviour
             // 退出爬梯或抓取區域時，禁用抓取功能
             if (other.CompareTag("Grabbing"))
             {
-                leftOVRGrabber.m_parentHeldObject = false;
-                rightOVRGrabber.m_parentHeldObject = false;
+                //leftOVRGrabber.m_parentHeldObject = false;
+                //rightOVRGrabber.m_parentHeldObject = false;
             }
         }
     }
