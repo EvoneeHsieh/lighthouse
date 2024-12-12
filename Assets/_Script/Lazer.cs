@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Lazer : MonoBehaviour
 {
@@ -10,10 +13,11 @@ public class Lazer : MonoBehaviour
     [SerializeField] private Transform startPoint; // Assign this in the inspector
     [SerializeField] private Camera playerCamera; // Main camera reference
 
-    private bool isLaserTrackingActive = false;
+    private bool isLaserOn = false;
+    public InputActionReference inputAction;
+
 
     private ChargeManager currentChargeManager;
-
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
@@ -21,35 +25,29 @@ public class Lazer : MonoBehaviour
         lr.SetPosition(0, startPoint.position);
         lr.enabled = false; // Initially disable the laser
         playerCamera = Camera.main; // Get the main camera reference
+        //inputData=GetComponent<InputData>();
     }
 
     void Update()
     {
-        // Q 鍵切換雷射和手電筒
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (inputAction.action.WasPressedThisFrame())
         {
-            GameManager.instance.ToggleLaserAndFlashlight();
-            lr.enabled = GameManager.instance.isLazerActive;
-
-            // 如果雷射被啟動，啟動方向追蹤
-            isLaserTrackingActive = GameManager.instance.isLazerActive;
-
-            // 按下Q鍵時立即射出雷射
-            if (isLaserTrackingActive)
-            {
-                Vector3 direction = playerCamera.transform.forward;
-                CastLaser(startPoint.position, direction);
-            }
+            Debug.Log("AAAAAAAAAA press");
+            isLaserOn = !isLaserOn;
+            lr.enabled = isLaserOn;
         }
 
-        // 當isLaserTrackingActive為true時才會在每幀更新雷射方向
-        if (isLaserTrackingActive)
+        if (isLaserOn)
         {
-            Vector3 direction = playerCamera.transform.forward;
-            CastLaser(startPoint.position, direction);
+            UpdateLaser();
         }
     }
-
+    void UpdateLaser()
+    {
+        // ... 更新雷射的邏輯 ...
+        Vector3 direction = playerCamera.transform.forward;
+        CastLaser(startPoint.position, direction);
+    }
 
     public void CastLaser(Vector3 position, Vector3 direction)
     {
