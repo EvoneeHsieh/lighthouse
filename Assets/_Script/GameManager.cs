@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxEnergy = 2;
 
     [SerializeField] private GameObject gate; // Reference to the gate GameObject
-    [SerializeField] private Material gateOpen; // Material for the open gate
-    private bool gateChargeMax = false;
+    public bool gateChargeMax = false;//test
 
     public bool isLazerActive = false;
     private float chargeTimer = 0f;
@@ -25,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool chargeCanvasDisplayed = false;
     public int totalEnergy = 0;
     public Material chargedMaterial; // Material to switch on charge
+    public Material gateOpen;
 
     [SerializeField] private Transform WaterObject;
     private ChargeManager currentChargeManager;
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
             gate.GetComponent<Renderer>().material = gateOpen; // Ensure gate has a Renderer component
             // Optionally, you could disable this check after setting the material
             gateChargeMax = false; // Reset to avoid repeated changes
+
         }
     }
 
@@ -157,8 +158,12 @@ public class GameManager : MonoBehaviour
     }
 
     // Method to be called when the player collides with the gate
-    public void OnPlayerTouchGate()
-    {
-        SceneManager.LoadScene("Test1"); // Load the scene named "Test1"
-    }
+    //public void OnPlayerTouchGate()
+    //{
+    //    if (gateChargeMax)
+    //    {
+    //        Debug.Log("Touch");
+    //        SceneManager.LoadScene("Test1");
+    //    }
+    //}
 }
