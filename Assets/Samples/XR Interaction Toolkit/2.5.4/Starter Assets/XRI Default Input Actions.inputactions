@@ -1764,6 +1764,17 @@
                     "action": "Light On",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80d31f5b-aaa1-452d-aae3-6ace5400b868",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Light On",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

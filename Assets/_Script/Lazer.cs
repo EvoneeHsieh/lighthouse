@@ -16,10 +16,11 @@ public class Lazer : MonoBehaviour
     private bool isLaserOn = false;
     public InputActionReference inputAction;
 
-
+    public Canvas aimHint;
     private ChargeManager currentChargeManager;
     private void Start()
     {
+        aimHint.enabled = false;
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 1; // Initialize position count
         lr.SetPosition(0, startPoint.position);
@@ -35,6 +36,11 @@ public class Lazer : MonoBehaviour
             Debug.Log("AAAAAAAAAA press");
             isLaserOn = !isLaserOn;
             lr.enabled = isLaserOn;
+            aimHint.enabled=true;
+        }
+        else
+        {
+            aimHint.enabled = false;
         }
 
         if (isLaserOn)

@@ -142,10 +142,10 @@ Material:
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.20684223, g: 0.2732219, b: 0.78867924, a: 0.44705883}
-    - _DeepWater: {r: 0.06603769, g: 0.054264106, b: 0.008410464, a: 0.7372549}
+    - _DeepWater: {r: 0.066037714, g: 0.02362453, b: 0.019624414, a: 0.972549}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.50980395}
-    - _ShallowWater: {r: 0.3490566, g: 0.25604367, b: 0.18276076, a: 0.10980392}
+    - _ShallowWater: {r: 0.16981131, g: 0.124497786, b: 0.090512626, a: 0.07058824}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
