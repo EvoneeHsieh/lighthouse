@@ -8,19 +8,18 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody playerRb;
     public GameManager gameManager;
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Gate"))
-    //    {
-    //        Debug.Log("Hi");//it work
-    //        if (gameManager.gateChargeMax)
-    //        {
-    //            Debug.Log("Why");//work
-    //            SceneManager.LoadScene("Test1");
-    //            GameManager.instance.OnPlayerTouchGate();
-    //        }
-    //    }
-    //}
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gate"))
+        {
+            Debug.Log("Hi");//it work
+            if (gameManager.gateChargeMax)
+            {
+                Debug.Log("Why");//work
+                SceneManager.LoadScene("Test1");
+            }
+        }
+    }
     //public void OnTriggerStay(Collider other)
     //{
     //    if (gameManager.gateChargeMax)
