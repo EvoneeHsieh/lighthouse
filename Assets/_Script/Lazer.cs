@@ -20,7 +20,7 @@ public class Lazer : MonoBehaviour
     private ChargeManager currentChargeManager;
     private void Start()
     {
-        aimHint.enabled = false;
+        aimHint.enabled = true;
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 1; // Initialize position count
         lr.SetPosition(0, startPoint.position);
@@ -36,11 +36,11 @@ public class Lazer : MonoBehaviour
             Debug.Log("AAAAAAAAAA press");
             isLaserOn = !isLaserOn;
             lr.enabled = isLaserOn;
-            aimHint.enabled=true;
+            //aimHint.enabled=true;
         }
         else
         {
-            aimHint.enabled = false;
+            //aimHint.enabled = false;
         }
 
         if (isLaserOn)
