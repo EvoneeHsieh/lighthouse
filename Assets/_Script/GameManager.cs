@@ -8,14 +8,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    //about Canvas
     [SerializeField] private Canvas chargeCompleteCanvas;
     [SerializeField] private Canvas waterLevelDownCanvas;
     [SerializeField] private Canvas playerTouchWater;
-    [SerializeField] private TextMeshProUGUI energyCounterText; // 更新為 TextMeshProUGUI 元件
+    [SerializeField] private TextMeshProUGUI energyCounterText; // Update TextMeshProUGUI
+
+    //Energy count
     [SerializeField] private int maxEnergy = 2;
 
     [SerializeField] private GameObject gate; // Reference to the gate GameObject
-    public bool gateChargeMax;//test
+    public bool gateChargeMax;//testing button
 
     public bool isLazerActive = false;
     private float chargeTimer = 0f;
@@ -26,7 +29,10 @@ public class GameManager : MonoBehaviour
     public Material chargedMaterial; // Material to switch on charge
     public Material gateOpen;
 
-    [SerializeField] private Transform WaterObject;
+    //Animation
+    [SerializeField] private Transform waterObject;
+    [SerializeField] private GameObject player;
+
     private ChargeManager currentChargeManager;
 
     private void Awake()
@@ -121,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void HitWaterLevel()
     {
-        Animator waterAnimator = WaterObject.GetComponent<Animator>();
+        Animator waterAnimator = waterObject.GetComponent<Animator>();
         if (waterAnimator != null)
         {
             waterAnimator.SetTrigger("StartLowering");
@@ -153,9 +159,15 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTouchWater()
     {
-        Debug.Log("You died");
         playerTouchWater.enabled = true;
-        Time.timeScale = 0;
+        Animator touchWater= player.GetComponent<Animator>();
+        if (touchWater != null)
+        {
+            touchWater.SetTrigger("touchWater");
+            Debug.Log("animate doing");
+        }
+
+        //Time.timeScale = 0;
     }
 
     // Method to be called when the player collides with the gate
