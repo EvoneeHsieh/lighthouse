@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform waterObject;
     [SerializeField] private GameObject player;
 
+    //moving
+    public Transform respawnPoint; // 玩家重生點
+    //private bool canMove = true;
+
+
     private ChargeManager currentChargeManager;
 
     private void Awake()
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //canMove = true;
         gateChargeMax=false;
         chargeCompleteCanvas.enabled = false;
         waterLevelDownCanvas.enabled = false;
@@ -84,9 +90,6 @@ public class GameManager : MonoBehaviour
         {
             // Change the gate material to gateOpen
             gate.GetComponent<Renderer>().material = gateOpen; // Ensure gate has a Renderer component
-            // Optionally, you could disable this check after setting the material
-            //gateChargeMax = false; // Reset to avoid repeated changes
-
         }
     }
 
@@ -163,19 +166,13 @@ public class GameManager : MonoBehaviour
         Animator touchWater= player.GetComponent<Animator>();
         if (touchWater != null)
         {
-            touchWater.SetTrigger("touchWater");
-            Debug.Log("animate doing");
+            touchWater.SetTrigger("touchWater"); // 觸發TouchWater動畫
+            Debug.Log("Player animation triggered");
+
+            // 設置玩家無法移動
+            //canMove = false;
         }
 
         //Time.timeScale = 0;
     }
-
-    // Method to be called when the player collides with the gate
-    //public void OnPlayerTouchGate()
-    //{
-    //    if (gateChargeMax)
-    //    {
-    //        Debug.Log("gateOpen");
-    //    }
-    //}
 }
