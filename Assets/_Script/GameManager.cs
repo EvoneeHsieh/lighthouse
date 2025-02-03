@@ -164,15 +164,22 @@ public class GameManager : MonoBehaviour
     {
         playerTouchWater.enabled = true;
         Animator touchWater= player.GetComponent<Animator>();
+
         if (touchWater != null)
         {
             touchWater.SetTrigger("touchWater"); // 觸發TouchWater動畫
             Debug.Log("Player animation triggered");
-
-            // 設置玩家無法移動
-            //canMove = false;
         }
 
-        //Time.timeScale = 0;
+        if (respawnPoint != null)
+        {
+            player.transform.position = respawnPoint.position;
+            player.transform.rotation = respawnPoint.rotation; // 可選：重設旋轉
+            Debug.Log("Player respawned at " + respawnPoint.position);
+        }
+        else
+        {
+            Debug.LogError("Respawn point is not set!");
+        }
     }
 }
