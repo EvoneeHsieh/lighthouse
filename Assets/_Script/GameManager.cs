@@ -163,18 +163,23 @@ public class GameManager : MonoBehaviour
     public void PlayerTouchWater()
     {
         playerTouchWater.enabled = true;
-        Animator touchWater= player.GetComponent<Animator>();
+        Animator touchWater = player.GetComponent<Animator>();
 
-        if (touchWater != null)
+        if (touchWater != null) // 確保 Animator 存在
         {
-            touchWater.SetTrigger("touchWater"); // 觸發TouchWater動畫
+            touchWater.SetTrigger("touchWater");
             Debug.Log("Player animation triggered");
+            StartCoroutine(ResetTouchWaterTrigger(touchWater));
         }
-
+        else
+        {
+            Debug.LogError("Player does not have an Animator component!");
+        }
+        //respawn
         if (respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
-            player.transform.rotation = respawnPoint.rotation; // 可選：重設旋轉
+            player.transform.rotation = respawnPoint.rotation;
             Debug.Log("Player respawned at " + respawnPoint.position);
         }
         else
@@ -182,4 +187,13 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Respawn point is not set!");
         }
     }
+
+    private IEnumerator ResetTouchWaterTrigger(Animator animator)
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        animator.ResetTrigger("touchWater");
+        Debug.Log("touchWater trigger reset");
+        playerTouchWater.enabled=false;
+    }
+
 }
