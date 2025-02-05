@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement; // Add this for scene management
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     //about Canvas
-    [SerializeField] private Canvas chargeCompleteCanvas;
-    [SerializeField] private Canvas waterLevelDownCanvas;
-    [SerializeField] private Canvas playerTouchWater;
+    [SerializeField] private TextMeshProUGUI chargeCompleteCanvas;
+    [SerializeField] private TextMeshProUGUI waterLevelDownCanvas;
+    [SerializeField] private Image playerTouchWater;
     [SerializeField] private TextMeshProUGUI energyCounterText; // Update TextMeshProUGUI
 
     //Energy count
