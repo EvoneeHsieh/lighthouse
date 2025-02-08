@@ -1,25 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // Add this for scene management
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    //about Canvas
-    [SerializeField] private TextMeshProUGUI chargeCompleteCanvas;
-    [SerializeField] private TextMeshProUGUI waterLevelDownCanvas;
-    [SerializeField] private Image playerTouchWater;
-    [SerializeField] private TextMeshProUGUI energyCounterText; // Update TextMeshProUGUI
+    // UI Canvas Groups
+    [SerializeField] private CanvasGroup chargeCompleteCanvas;
+    [SerializeField] private CanvasGroup waterLevelDownCanvas;
+    [SerializeField] private CanvasGroup playerTouchWaterCanvas;
+    [SerializeField] private TextMeshProUGUI energyCounterText; // 這個不需要 CanvasGroup
 
-    //Energy count
+    // Energy count
     [SerializeField] private int maxEnergy = 2;
-
-    [SerializeField] private GameObject gate; // Reference to the gate GameObject
-    public bool gateChargeMax;//testing button
+    [SerializeField] private GameObject gate;
+    public bool gateChargeMax;
 
     public bool isLazerActive = false;
     private float chargeTimer = 0f;
@@ -27,18 +24,15 @@ public class GameManager : MonoBehaviour
     private float chargeTime = 1f;
     public bool chargeCanvasDisplayed = false;
     public int totalEnergy = 0;
-    public Material chargedMaterial; // Material to switch on charge
+    public Material chargedMaterial;
     public Material gateOpen;
 
-    //Animation
+    // Animation
     [SerializeField] private Transform waterObject;
     [SerializeField] private GameObject player;
 
-    //moving
-    public Transform respawnPoint; // 玩家重生點
-    //private bool canMove = true;
-
-
+    // Moving
+    public Transform respawnPoint;
     private ChargeManager currentChargeManager;
 
     private void Awake()
@@ -55,12 +49,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //canMove = true;
-        gateChargeMax=false;
-        chargeCompleteCanvas.enabled = false;
-        waterLevelDownCanvas.enabled = false;
-        playerTouchWater.enabled = false;
-        UpdateEnergyCounterUI(); // 初始化顯示
+        gateChargeMax = false;
+        SetCanvasGroupVisibility(chargeCompleteCanvas, false);
+        SetCanvasGroupVisibility(waterLevelDownCanvas, false);
+        SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
+        UpdateEnergyCounterUI();
     }
 
     public void StartCharging(ChargeManager chargeManager)
@@ -80,31 +73,29 @@ public class GameManager : MonoBehaviour
             if (chargeTimer >= chargeTime && !chargeCanvasDisplayed)
             {
                 ShowChargeCompleteCanvas();
-                RegisterCharge(); // 將註冊充能移到這裡
+                RegisterCharge();
                 isCharging = false;
                 chargeTimer = 0f;
             }
         }
 
-        // Check if the gateChargeMax condition is true
         if (gateChargeMax)
         {
-            // Change the gate material to gateOpen
-            gate.GetComponent<Renderer>().material = gateOpen; // Ensure gate has a Renderer component
+            gate.GetComponent<Renderer>().material = gateOpen;
         }
     }
 
     private void ShowChargeCompleteCanvas(float duration = 1f)
     {
-        chargeCompleteCanvas.enabled = true;
+        SetCanvasGroupVisibility(chargeCompleteCanvas, true);
         chargeCanvasDisplayed = true;
         Invoke("HideChargeCompleteCanvas", duration);
     }
 
     private void HideChargeCompleteCanvas()
     {
-        chargeCompleteCanvas.enabled = false;
-        chargeCanvasDisplayed = false; // Reset canvas display state
+        SetCanvasGroupVisibility(chargeCompleteCanvas, false);
+        chargeCanvasDisplayed = false;
     }
 
     private void RegisterCharge()
@@ -119,8 +110,8 @@ public class GameManager : MonoBehaviour
         if (totalEnergy >= maxEnergy)
         {
             Debug.Log("Max Energy");
-            isCharging = false; // Stop charging
-            gateChargeMax = true; // Set gate charge max to true
+            isCharging = false;
+            gateChargeMax = true;
         }
     }
 
@@ -136,24 +127,25 @@ public class GameManager : MonoBehaviour
         {
             waterAnimator.SetTrigger("StartLowering");
         }
-        StartCoroutine(WaitAndShowCanvas(1f));
+        StartCoroutine(WaitAndShowCanvas(waterLevelDownCanvas, 1f));
     }
 
-    private IEnumerator WaitAndShowCanvas(float waitTime)
+    private IEnumerator WaitAndShowCanvas(CanvasGroup canvasGroup, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        ShowWaterLevelDownCanvas();
+        SetCanvasGroupVisibility(canvasGroup, true);
+        Invoke("HideWaterLevelDownCanvas", 1f);
     }
 
     public void ShowWaterLevelDownCanvas(float duration = 1f)
     {
-        waterLevelDownCanvas.enabled = true;
+        SetCanvasGroupVisibility(waterLevelDownCanvas, true);
         Invoke("HideWaterLevelDownCanvas", duration);
     }
 
     private void HideWaterLevelDownCanvas()
     {
-        waterLevelDownCanvas.enabled = false;
+        SetCanvasGroupVisibility(waterLevelDownCanvas, false);
     }
 
     public void ToggleLaserAndFlashlight()
@@ -163,10 +155,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTouchWater()
     {
-        playerTouchWater.enabled = true;
+        SetCanvasGroupVisibility(playerTouchWaterCanvas, true);
+        Invoke("HidePlayerTouchWaterCanvas", 2f); // 確保 HidePlayerTouchWaterCanvas 存在
+
         Animator touchWater = player.GetComponent<Animator>();
 
-        if (touchWater != null) // 確保 Animator 存在
+        if (touchWater != null)
         {
             touchWater.SetTrigger("touchWater");
             Debug.Log("Player animation triggered");
@@ -176,7 +170,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Player does not have an Animator component!");
         }
-        //respawn
+
         if (respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
@@ -189,12 +183,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HidePlayerTouchWaterCanvas()
+    {
+        SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
+    }
+
+
     private IEnumerator ResetTouchWaterTrigger(Animator animator)
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         animator.ResetTrigger("touchWater");
         Debug.Log("touchWater trigger reset");
-        playerTouchWater.enabled=false;
+        SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
     }
 
+    private void SetCanvasGroupVisibility(CanvasGroup canvasGroup, bool isVisible)
+    {
+        if (canvasGroup == null) return;
+
+        canvasGroup.alpha = isVisible ? 1 : 0;
+        canvasGroup.interactable = isVisible;
+        canvasGroup.blocksRaycasts = isVisible;
+    }
 }
