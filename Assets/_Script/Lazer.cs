@@ -31,16 +31,18 @@ public class Lazer : MonoBehaviour
 
     void Update()
     {
+        // VR 控制器按鈕輸入
         if (inputAction.action.WasPressedThisFrame())
         {
-            Debug.Log("AAAAAAAAAA press");
-            isLaserOn = !isLaserOn;
-            lr.enabled = isLaserOn;
-            //aimHint.enabled=true;
+            Debug.Log("VR 控制器按鈕按下");
+            ToggleLaser();
         }
-        else
+
+        // 鍵盤按鍵輸入 (Q 鍵)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            //aimHint.enabled = false;
+            Debug.Log("Q 鍵按下");
+            ToggleLaser();
         }
 
         if (isLaserOn)
@@ -48,6 +50,14 @@ public class Lazer : MonoBehaviour
             UpdateLaser();
         }
     }
+    void ToggleLaser()
+    {
+        isLaserOn = !isLaserOn;
+        lr.enabled = isLaserOn;
+        GameManager.instance.isLazerActive = isLaserOn; // 讓 GameManager 的狀態同步
+        Debug.Log("雷射狀態切換：" + (isLaserOn ? "開啟" : "關閉") + "，lr.enabled = " + lr.enabled);
+    }
+
     void UpdateLaser()
     {
         // ... 更新雷射的邏輯 ...

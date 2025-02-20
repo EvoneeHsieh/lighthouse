@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        isCharging=false;
         gateChargeMax = false;
         SetCanvasGroupVisibility(chargeCompleteCanvas, false);
         SetCanvasGroupVisibility(waterLevelDownCanvas, false);
