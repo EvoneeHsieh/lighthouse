@@ -55,7 +55,7 @@ public class Lazer : MonoBehaviour
         isLaserOn = !isLaserOn;
         lr.enabled = isLaserOn;
         GameManager.instance.isLazerActive = isLaserOn; // Åý GameManager ªºª¬ºA¦P¨B
-        Debug.Log("¹p®gª¬ºA¤Á´«¡G" + (isLaserOn ? "¶}±Ò" : "Ãö³¬") + "¡Alr.enabled = " + lr.enabled);
+        //Debug.Log("¹p®gª¬ºA¤Á´«¡G" + (isLaserOn ? "¶}±Ò" : "Ãö³¬") + "¡Alr.enabled = " + lr.enabled);
     }
 
     void UpdateLaser()
@@ -120,7 +120,7 @@ public class Lazer : MonoBehaviour
             else
             {
                 lr.positionCount = i + 2;
-                lr.SetPosition(i + 1, position);
+                lr.SetPosition(i + 1, position + direction * (maxLaserLength - totalDistance));
                 break;
             }
         }

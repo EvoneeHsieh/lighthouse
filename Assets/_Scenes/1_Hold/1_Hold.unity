@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041839123, g: 0.033368886, b: 0.019513981, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017134606, g: 0.000000026346052, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 175763415}
   - component: {fileID: 175763417}
   - component: {fileID: 175763416}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PlayerTouchWater_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 257644544}
   - component: {fileID: 257644546}
   - component: {fileID: 257644545}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChargeCount_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2528,7 +2528,7 @@ GameObject:
   - component: {fileID: 533740134}
   - component: {fileID: 533740136}
   - component: {fileID: 533740135}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WaterLevelDown_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5116,7 +5116,7 @@ GameObject:
   - component: {fileID: 1354248136}
   - component: {fileID: 1354248138}
   - component: {fileID: 1354248137}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChargeComplete_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6807,33 +6807,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 360545263943434500, guid: 3ad77016319ba80498fa96fc9a11065f, type: 3}
   m_PrefabInstance: {fileID: 1860449602}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1795813857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1351820412815064272, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-  m_PrefabInstance: {fileID: 2683257207098183239}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1795813858
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795813857}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b98aa6cf0c84804bbb64f621852b461, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1809474677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8434,7 +8407,7 @@ MonoBehaviour:
   gateChargeMax: 0
   isLazerActive: 0
   chargeCanvasDisplayed: 0
-  totalEnergy: 2
+  totalEnergy: 0
   chargedMaterial: {fileID: 2100000, guid: 36bf4de8e66575249950bc708cbedac6, type: 2}
   gateOpen: {fileID: 2100000, guid: e7ce47312cda02349a58e0e8ab8ff57e, type: 2}
   waterObject: {fileID: 8136429202656241027}
@@ -8558,7 +8531,7 @@ GameObject:
   - component: {fileID: 596502609542236637}
   - component: {fileID: 6603502398560843210}
   - component: {fileID: 5947342305951118003}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9961,7 +9934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8739728655447320661}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10540,70 +10513,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &2683257207098183239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1351820412815064272, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_Name
-      value: hand 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351820412815064272, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1840126357812995690, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1351820412815064272, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1795813858}
-  m_SourcePrefab: {fileID: 100100000, guid: 5aa2b0a984b75b147b74f3501b93f53e, type: 3}
 --- !u!136 &2699452957853038713
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11641,7 +11550,7 @@ GameObject:
   - component: {fileID: 7621159930710626252}
   - component: {fileID: 7621159930710626251}
   - component: {fileID: 7621159930710626255}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player_XR Origin (XR Rig)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -12861,7 +12770,7 @@ GameObject:
   - component: {fileID: 6717796089848709941}
   - component: {fileID: 1273983305054073458}
   - component: {fileID: 6180510534261765436}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12998,7 +12907,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508109088580153239}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -13032,7 +12941,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -13047,7 +12956,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.03375721
+        value: 0.48609352
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -13678,8 +13587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1457a0b98c5251a41977d3c23f40f015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLaserLength: 50
-  maxBounces: 2
+  maxLaserLength: 1000
+  maxBounces: 5
   lr: {fileID: 5947342305951118003}
   startPoint: {fileID: 596502609542236637}
   playerCamera: {fileID: 1438988996880478729}
@@ -13882,7 +13791,7 @@ GameObject:
   - component: {fileID: 3810316557587014113}
   - component: {fileID: 981926920777292446}
   - component: {fileID: 9222358294961763385}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16073,7 +15982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643776390363350809}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16673,4 +16582,3 @@ SceneRoots:
   - {fileID: 9121688496194618263}
   - {fileID: 3649735505820376282}
   - {fileID: 640011994}
-  - {fileID: 2683257207098183239}
