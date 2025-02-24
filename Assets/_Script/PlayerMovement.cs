@@ -16,19 +16,10 @@ public class PlayerMovement : MonoBehaviour
             if (gameManager.gateChargeMax)
             {
                 Debug.Log("Why");//work
-                SceneManager.LoadScene("Test1");
+                SceneManager.LoadScene("2_Hold2");
             }
         }
     }
-    //public void OnTriggerStay(Collider other)
-    //{
-    //    if (gameManager.gateChargeMax)
-    //    {
-    //        Debug.Log("Why");
-    //        SceneManager.LoadScene("Test1");
-    //        //GameManager.instance.OnPlayerTouchGate();
-    //    }
-    //}
     public void OnTriggerExit(Collider other)
     {
         ClimbProvider climbProvider = GetComponent<ClimbProvider>();

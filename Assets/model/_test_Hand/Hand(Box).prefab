@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8018282442614359810}
   - component: {fileID: 3855464861461598670}
   - component: {fileID: 2106785071550817966}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hand(Box)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 954451e349378be4da7732f0a57f7eb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
