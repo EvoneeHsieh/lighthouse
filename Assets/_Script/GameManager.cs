@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CanvasGroup chargeCompleteCanvas;
     [SerializeField] private CanvasGroup waterLevelDownCanvas;
     [SerializeField] private CanvasGroup playerTouchWaterCanvas;
-    [SerializeField] private TextMeshProUGUI energyCounterText; // 這個不需要 CanvasGroup
+    [SerializeField] private TextMeshProUGUI energyCounterText;
 
     // Energy count
     [SerializeField] private int maxEnergy = 2;
@@ -30,40 +30,29 @@ public class GameManager : MonoBehaviour
     // Animation
     [SerializeField] private Transform waterObject;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject doorObject;
 
     // Moving
     public Transform respawnPoint;
     private ChargeManager currentChargeManager;
 
+    // 測試變數：手動觸發開門動畫
+    public bool testDoorOpen = false;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
     private void Start()
     {
-        isCharging=false;
+        isCharging = false;
         gateChargeMax = false;
         SetCanvasGroupVisibility(chargeCompleteCanvas, false);
         SetCanvasGroupVisibility(waterLevelDownCanvas, false);
         SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
         UpdateEnergyCounterUI();
-    }
-
-    public void StartCharging(ChargeManager chargeManager)
-    {
-        if (isCharging || chargeManager.isCharged) return;
-
-        currentChargeManager = chargeManager;
-        isCharging = true;
-        chargeTimer = 0f;
     }
 
     private void Update()
@@ -80,23 +69,21 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (gateChargeMax)
+        // 測試：如果 `testDoorOpen` 被啟動，則開門
+        if (testDoorOpen)
         {
-            gate.GetComponent<Renderer>().material = gateOpen;
+            testDoorOpen = false; // 只執行一次
+            OpenGate();
         }
     }
 
-    private void ShowChargeCompleteCanvas(float duration = 1f)
+    public void StartCharging(ChargeManager chargeManager)
     {
-        SetCanvasGroupVisibility(chargeCompleteCanvas, true);
-        chargeCanvasDisplayed = true;
-        Invoke("HideChargeCompleteCanvas", duration);
-    }
+        if (isCharging || chargeManager.isCharged) return;
 
-    private void HideChargeCompleteCanvas()
-    {
-        SetCanvasGroupVisibility(chargeCompleteCanvas, false);
-        chargeCanvasDisplayed = false;
+        currentChargeManager = chargeManager;
+        isCharging = true;
+        chargeTimer = 0f;
     }
 
     private void RegisterCharge()
@@ -113,12 +100,38 @@ public class GameManager : MonoBehaviour
             Debug.Log("Max Energy");
             isCharging = false;
             gateChargeMax = true;
+            OpenGate();
+        }
+    }
+
+    private void OpenGate()
+    {
+        // 觸發門的動畫
+        Animator gateOpenAni = doorObject.GetComponent<Animator>();
+        if (gateOpenAni != null)
+        {
+            gateOpenAni.SetTrigger("DoorOpenAni");
+        }
+        else
+        {
+            Debug.LogError("門沒有 Animator 組件！");
+        }
+
+        // 改變門的材質
+        if (gate != null)
+        {
+            Renderer gateRenderer = gate.GetComponent<Renderer>();
+            if (gateRenderer != null)
+            {
+                gateRenderer.material = gateOpen;
+            }
         }
     }
 
     private void UpdateEnergyCounterUI()
     {
-        energyCounterText.text = $"Energy({totalEnergy}/{maxEnergy})";
+        if (energyCounterText != null)
+            energyCounterText.text = $"Energy({totalEnergy}/{maxEnergy})";
     }
 
     public void HitWaterLevel()
@@ -157,7 +170,7 @@ public class GameManager : MonoBehaviour
     public void PlayerTouchWater()
     {
         SetCanvasGroupVisibility(playerTouchWaterCanvas, true);
-        Invoke("HidePlayerTouchWaterCanvas", 2f); // 確保 HidePlayerTouchWaterCanvas 存在
+        Invoke("HidePlayerTouchWaterCanvas", 2f);
 
         Animator touchWater = player.GetComponent<Animator>();
 
@@ -189,7 +202,6 @@ public class GameManager : MonoBehaviour
         SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
     }
 
-
     private IEnumerator ResetTouchWaterTrigger(Animator animator)
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
@@ -205,5 +217,18 @@ public class GameManager : MonoBehaviour
         canvasGroup.alpha = isVisible ? 1 : 0;
         canvasGroup.interactable = isVisible;
         canvasGroup.blocksRaycasts = isVisible;
+    }
+
+    private void ShowChargeCompleteCanvas(float duration = 1f)
+    {
+        SetCanvasGroupVisibility(chargeCompleteCanvas, true);
+        chargeCanvasDisplayed = true;
+        Invoke("HideChargeCompleteCanvas", duration);
+    }
+
+    private void HideChargeCompleteCanvas()
+    {
+        SetCanvasGroupVisibility(chargeCompleteCanvas, false);
+        chargeCanvasDisplayed = false;
     }
 }
