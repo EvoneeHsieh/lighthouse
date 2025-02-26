@@ -13,6 +13,7 @@ TagManager:
   - Grabbing
   - LeftHand
   - RightHand
+  - RECCamera
   layers:
   - Default
   - TransparentFX

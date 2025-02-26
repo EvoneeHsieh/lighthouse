@@ -172,30 +172,37 @@ public class GameManager : MonoBehaviour
         SetCanvasGroupVisibility(playerTouchWaterCanvas, true);
         Invoke("HidePlayerTouchWaterCanvas", 2f);
 
-        Animator touchWater = player.GetComponent<Animator>();
-
-        if (touchWater != null)
+        if (player != null)
         {
-            touchWater.SetTrigger("touchWater");
-            Debug.Log("Player animation triggered");
-            StartCoroutine(ResetTouchWaterTrigger(touchWater));
+            Animator touchWater = player.GetComponent<Animator>();
+            if (touchWater != null)
+            {
+                touchWater.SetTrigger("touchWater");
+                Debug.Log("Player animation triggered");
+                StartCoroutine(ResetTouchWaterTrigger(touchWater));
+            }
+            else
+            {
+                Debug.LogWarning("Player does not have an Animator component! Skipping animation.");
+            }
+
+            if (respawnPoint != null)
+            {
+                player.transform.position = respawnPoint.position;
+                player.transform.rotation = respawnPoint.rotation;
+                Debug.Log("Player respawned at " + respawnPoint.position);
+            }
+            else
+            {
+                Debug.LogError("Respawn point is not set!");
+            }
         }
         else
         {
-            Debug.LogError("Player does not have an Animator component!");
-        }
-
-        if (respawnPoint != null)
-        {
-            player.transform.position = respawnPoint.position;
-            player.transform.rotation = respawnPoint.rotation;
-            Debug.Log("Player respawned at " + respawnPoint.position);
-        }
-        else
-        {
-            Debug.LogError("Respawn point is not set!");
+            Debug.LogError("Player reference is missing in GameManager!");
         }
     }
+
 
     private void HidePlayerTouchWaterCanvas()
     {
