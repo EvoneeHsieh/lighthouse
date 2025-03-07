@@ -230,7 +230,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlaySoundEffect
+    functionName: PlayGateSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

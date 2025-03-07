@@ -11,16 +11,16 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown = 1f; // 跳躍冷卻時間
     private bool canJump = true;
 
-    private Rigidbody playerRb;
+    public Rigidbody playerRb;
     public InputActionReference inputAction; // VR 控制器按鍵輸入
-
     public GameManager gameManager;
+
+    private bool isClimbing = false; // 是否正在攀爬
     private ClimbProvider climbProvider;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        climbProvider = GetComponent<ClimbProvider>(); // 取得 ClimbProvider
 
         if (playerRb == null)
         {
@@ -31,19 +31,16 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // VR 控制器按鈕輸入
-        if (inputAction.action.WasPressedThisFrame() && canJump && !IsClimbing())
+        if (inputAction.action.WasPressedThisFrame() && canJump)
         {
             Jump();
         }
 
         // 鍵盤按鍵輸入 (Q 鍵)
-        if (Input.GetKeyDown(KeyCode.Q) && canJump && !IsClimbing())
+        if (Input.GetKeyDown(KeyCode.Q) && canJump)
         {
             Jump();
         }
-
-        // 自動檢測是否在攀爬，根據狀態控制重力
-        HandleGravity();
     }
 
     private void Jump()
@@ -71,11 +68,22 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene("2_Hold2");
             }
         }
+
+        // 檢查是否進入攀爬區域
+        if (other.gameObject.CompareTag("Climbable"))
+        {
+            StartClimbing();
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        // 確保 ClimbProvider 存在，並且當玩家離開攀爬時開啟重力
+        if (other.gameObject.CompareTag("Climbable"))
+        {
+            StopClimbing();
+        }
+
+        climbProvider = GetComponent<ClimbProvider>();
         if (climbProvider != null && climbProvider.locomotionPhase != LocomotionPhase.Moving)
         {
             playerRb.useGravity = true;
@@ -90,29 +98,26 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // **檢查是否在攀爬**
-    private bool IsClimbing()
+    // **開始攀爬：解鎖旋轉**
+    private void StartClimbing()
     {
-        return climbProvider != null && climbProvider.locomotionPhase == LocomotionPhase.Moving;
+        isClimbing = true;
+        playerRb.constraints = RigidbodyConstraints.None; // 解除所有限制
+        Debug.Log("開始攀爬，解除旋轉鎖定");
     }
 
-    // **動態控制重力**
-    private void HandleGravity()
+    // **停止攀爬：恢復旋轉鎖定**
+    private void StopClimbing()
     {
-        if (IsClimbing())
-        {
-            playerRb.useGravity = false;
-            playerRb.velocity = Vector3.zero;
-        }
-        else
-        {
-            StartCoroutine(EnableGravitySmoothly()); // 平滑啟動重力
-        }
-    }
-    private IEnumerator EnableGravitySmoothly()
-    {
-        yield return new WaitForSeconds(0.1f); // 短暫等待，確保離開攀爬狀態
-        playerRb.useGravity = true; // 再開啟重力
+        isClimbing = false;
+        LockRotation();
+        Debug.Log("停止攀爬，恢復旋轉鎖定");
     }
 
+    // **鎖定旋轉**
+    private void LockRotation()
+    {
+        playerRb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        Debug.Log("旋轉鎖定已恢復");
+    }
 }
