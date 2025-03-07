@@ -1579,7 +1579,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Light On",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "71abb941-5d32-4b50-a93c-75722538b27f",
                     "expectedControlType": "Button",
@@ -1761,18 +1761,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Light On",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "80d31f5b-aaa1-452d-aae3-6ace5400b868",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Light On",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

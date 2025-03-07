@@ -31,24 +31,24 @@ public class Lazer : MonoBehaviour
 
     void Update()
     {
-        // VR 控制器按鈕輸入
-        if (inputAction.action.WasPressedThisFrame())
-        {
-            Debug.Log("VR 控制器按鈕按下");
-            ToggleLaser();
-        }
+        //// VR 控制器按鈕輸入
+        //if (inputAction.action.WasPressedThisFrame())
+        //{
+        //    Debug.Log("VR 控制器按鈕按下");
+        //    ToggleLaser();
+        //}
 
-        // 鍵盤按鍵輸入 (Q 鍵)
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("Q 鍵按下");
-            ToggleLaser();
-        }
+        //// 鍵盤按鍵輸入 (Q 鍵)
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    Debug.Log("Q 鍵按下");
+        //    ToggleLaser();
+        //}
 
-        if (isLaserOn)
-        {
-            UpdateLaser();
-        }
+        //if (isLaserOn)
+        //{
+        //    UpdateLaser();
+        //}
     }
     void ToggleLaser()
     {

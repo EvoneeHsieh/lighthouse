@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     private void UpdateEnergyCounterUI()
     {
         if (energyCounterText != null)
-            energyCounterText.text = $"Energy({totalEnergy}/{maxEnergy})";
+            energyCounterText.text = $"¥R¹q({totalEnergy}/{maxEnergy})";
     }
 
     public void HitWaterLevel()
