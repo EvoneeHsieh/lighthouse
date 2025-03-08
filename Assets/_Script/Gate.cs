@@ -1,33 +1,41 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    public AudioSource audioSource; // ¥Î¨ÓÀx¦s AudioSource
+    public AudioSource doorOpenAniSound; // ç”¨ä¾†å„²å­˜ AudioSource
+    public AudioSource WindnRainSound;
 
     void Start()
     {
-        // ¹Á¸ÕÀò¨ú·í«eª«¥ó¤Wªº AudioSource
+        // å˜—è©¦ç²å–ç•¶å‰ç‰©ä»¶ä¸Šçš„ AudioSource
         //audioSource = GetComponent<AudioSource>();
 
-        if (audioSource == null)
+        if (doorOpenAniSound == null)
         {
-            Debug.LogError("¨S¦³§ä¨ì AudioSource¡A½Ğ½T»{ª«¥ó¤W¬O§_¦³­µ®Ä¨Ó·½¡I");
+            Debug.LogError("æ²’æœ‰æ‰¾åˆ° AudioSourceï¼Œè«‹ç¢ºèªç‰©ä»¶ä¸Šæ˜¯å¦æœ‰éŸ³æ•ˆä¾†æºï¼");
         }
     }
 
-    // ¶}ªù®É¼½©ñ­µ®Ä
+    // é–‹é–€æ™‚æ’­æ”¾éŸ³æ•ˆ
     public void PlayGateSound()
     {
-        if (audioSource != null && audioSource.clip != null)
+        if (doorOpenAniSound != null && doorOpenAniSound.clip != null)
         {
-            audioSource.Play(); // ¼½©ñ­µ®Ä
-            Debug.Log("¼½©ñªùªº­µ®Ä¡G" + audioSource.clip.name);
+            doorOpenAniSound.Play(); // æ’­æ”¾éŸ³æ•ˆ
+            Debug.Log("æ’­æ”¾é–€çš„éŸ³æ•ˆï¼š" + doorOpenAniSound.clip.name);
         }
         else
         {
-            Debug.LogWarning("µLªk¼½©ñ­µ®Ä¡AAudioSource ©Î AudioClip ¥i¯à¬°ªÅ¡I");
+            Debug.LogWarning("ç„¡æ³•æ’­æ”¾éŸ³æ•ˆï¼ŒAudioSource æˆ– AudioClip å¯èƒ½ç‚ºç©ºï¼");
+        }
+    }
+    public void GateOpendSound()
+    {
+        if(WindnRainSound!=null&& WindnRainSound.clip!=null)
+        {
+            WindnRainSound.Play();
         }
     }
 }
