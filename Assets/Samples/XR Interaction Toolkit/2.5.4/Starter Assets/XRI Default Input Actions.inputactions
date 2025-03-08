@@ -1579,12 +1579,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "LightOn",
                     "type": "Button",
                     "id": "71abb941-5d32-4b50-a93c-75722538b27f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "8933b814-75ed-4fe9-b3af-35ac9e22e7e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -1757,7 +1766,18 @@
                 {
                     "name": "",
                     "id": "9ce15e6c-3ba5-4bc5-99ea-5f29a035bf18",
-                    "path": "<XRController>{RightHand}/primaryButton",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "LightOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "791bce20-8afe-4599-b7c1-1aced4e9f7c7",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
