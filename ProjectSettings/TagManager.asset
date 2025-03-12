@@ -15,6 +15,7 @@ TagManager:
   - RightHand
   - RECCamera
   - Ground
+  - NPC
   layers:
   - Default
   - TransparentFX

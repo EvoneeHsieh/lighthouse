@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: con0-100
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 917c8bcd0c2fb03448d91a4ba9527d5a, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 917c8bcd0c2fb03448d91a4ba9527d5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.51
