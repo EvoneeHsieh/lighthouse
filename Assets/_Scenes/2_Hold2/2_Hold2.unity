@@ -1590,17 +1590,21 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 273440569}
+    - target: {fileID: 4616467298849780271, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5404301444506598718, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.8
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5404301444506598718, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.84
+      value: 1.83
       objectReference: {fileID: 0}
     - target: {fileID: 5404301444506598718, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.1
+      value: -37.42
       objectReference: {fileID: 0}
     - target: {fileID: 5404301444506598718, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1634,9 +1638,33 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 273440569}
+    - target: {fileID: 7917445361609954026, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 933e063fcabf0d14f88eafadd8f7c5c4, type: 2}
+    - target: {fileID: 7917445361609954026, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -551165825085890471, guid: 933e063fcabf0d14f88eafadd8f7c5c4, type: 2}
+    - target: {fileID: 7917445361609954026, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7937916559295468460, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_Name
       value: Player_XR Origin (XR Rig)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252115703683829563, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 933e063fcabf0d14f88eafadd8f7c5c4, type: 2}
+    - target: {fileID: 8252115703683829563, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -551165825085890471, guid: 933e063fcabf0d14f88eafadd8f7c5c4, type: 2}
+    - target: {fileID: 8252115703683829563, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205332438646464528, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: gameManager
@@ -2759,20 +2787,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
-      propertyPath: m_BoundingSphereOverride.w
+      propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
+      propertyPath: m_Range
+      value: 14.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
+      propertyPath: m_SpotAngle
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.002e-42
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -1.3767043e-11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424241776077199491, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 4.5907e-41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5095904375572018671, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2825,6 +2865,10 @@ PrefabInstance:
     - target: {fileID: 7829032940519303214, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247944619555251417, guid: c3a006ae74323304ab5358ee41480a31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1942
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4567,11 +4611,238 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6.95e-43, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 4.5907e-41, y: -4.867763e-39, z: 2.7106062e-20, w: 2.47966e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &940310636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940310638}
+  - component: {fileID: 940310637}
+  - component: {fileID: 940310639}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &940310637
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940310636}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8473a449bd45616488a4caf0c092e7c3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8473a449bd45616488a4caf0c092e7c3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 100
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &940310638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940310636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35.889557, y: -9.5, z: -3.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &940310639
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940310636}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: af18def44b76a264a96efb1d7f9519e3, type: 3}
+  m_Resource: {fileID: 8300000, guid: af18def44b76a264a96efb1d7f9519e3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &945126110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6779,19 +7050,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835867110997134120, guid: 921bd2675caabf14399d15906e9b5d9f, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.7e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7835867110997134120, guid: 921bd2675caabf14399d15906e9b5d9f, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.2282e-41
+      value: 2.7105054e-20
       objectReference: {fileID: 0}
     - target: {fileID: 7835867110997134120, guid: 921bd2675caabf14399d15906e9b5d9f, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.524355e-29
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 7835867110997134120, guid: 921bd2675caabf14399d15906e9b5d9f, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 6.701e-42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7365,7 +7636,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.7105054e-20, y: 3.030674e-39, z: 8.922e-42, w: 0}
+  m_BoundingSphereOverride: {x: 2.579e-41, y: 4.88385e-39, z: 1.83693e-40, w: -1.4546743e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9758,3 +10029,4 @@ SceneRoots:
   - {fileID: 265183032}
   - {fileID: 784442058}
   - {fileID: 273440567}
+  - {fileID: 940310638}
