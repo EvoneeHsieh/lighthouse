@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody playerRb;
     public GameManager gameManager;
     public InputActionReference jump;
+    public InputActionReference climbInput; // 合併左右手攀爬輸入
 
-    //jumping
-    public float jumpForce = 5f; // 跳躍力道
-    public float jumpCooldown = 1f; // 跳躍冷卻時間
+    public float jumpForce = 5f;
+    public float jumpCooldown = 1f;
     public bool canJump = true;
     public bool isGrounded = true;
+
+    private bool isClimbingZone = false;
 
     private void Start()
     {
@@ -29,44 +31,53 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // VR 控制器按鈕輸入
-        if (jump.action.WasPressedThisFrame() && canJump && isGrounded)
-        {
-            Debug.Log("VR 控制器按鈕按下");
-            jumpStart();
-        }
+        bool isClimbing = climbInput.action.IsPressed() && isClimbingZone;
 
-        // 鍵盤按鍵輸入 (空白鍵)
-        if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
+        playerRb.isKinematic = isClimbing;
+        playerRb.useGravity = !isClimbing;
+
+        if ((jump.action.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.Space)) && canJump && isGrounded)
         {
-            Debug.Log("空白鍵按下");
             jumpStart();
         }
     }
 
+    private void jumpStart()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        canJump = false;
+        isGrounded = false;
+        Invoke(nameof(ResetJump), jumpCooldown);
+    }
+
+    private void ResetJump()
+    {
+        canJump = true;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gate"))
+        if (other.CompareTag("Gate") && gameManager.gateChargeMax)
         {
-            Debug.Log("Hi"); // 測試觸發
-            if (gameManager.gateChargeMax)
-            {
-                Debug.Log("Why"); // 測試觸發
-                SceneManager.LoadScene("2_Hold2");
-            }
+            SceneManager.LoadScene("2_Hold2");
+        }
+
+        if (other.CompareTag("Climbable"))
+        {
+            isClimbingZone = true;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        ClimbProvider climbProvider = GetComponent<ClimbProvider>();
-        if (climbProvider != null && climbProvider.locomotionPhase != LocomotionPhase.Moving)
+        if (other.CompareTag("Ground"))
         {
-            playerRb.useGravity = true;
+            isGrounded = false;
         }
-        if (other.gameObject.CompareTag("Ground"))
+
+        if (other.CompareTag("Climbable"))
         {
-            isGrounded = false; // 玩家離開地面
+            isClimbingZone = false;
         }
     }
 
@@ -76,25 +87,10 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.instance.PlayerTouchWater();
         }
+
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true; // 確保玩家在地面上
+            isGrounded = true;
         }
-    }
-
-    //jump
-    private void jumpStart()
-    {
-        if (playerRb == null) return;
-
-        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 施加向上的力
-        canJump = false;
-        isGrounded = false;
-        Invoke(nameof(ResetJump), jumpCooldown); // 設定冷卻時間
-    }
-
-    private void ResetJump()
-    {
-        canJump = true;
     }
 }

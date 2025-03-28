@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.VFX;
 
 public class Lazer : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class Lazer : MonoBehaviour
 
     public Canvas aimHint;
     private ChargeManager currentChargeManager;
+
+    //特效
+    [Header("VFX")]
+    public VisualEffect lightningVFX; // 把你的閃電特效拖進 Inspector
+    public string lightningDirectionParam = "LightningDirection"; // 這是 VFX Graph 中的參數名
 
     private void Start()
     {
@@ -56,11 +62,26 @@ public class Lazer : MonoBehaviour
         isLaserOn = !isLaserOn;
         lr.enabled = isLaserOn;
         GameManager.instance.isLazerActive = isLaserOn; // 讓 GameManager 的狀態同步
+
+        // 開啟或關閉 VFX 特效顯示
+        if (lightningVFX != null)
+        {
+            if (isLaserOn)
+                lightningVFX.Play();
+            else
+                lightningVFX.Stop();
+        }
     }
 
     void UpdateLaser()
     {
         Vector3 direction = playerCamera.transform.forward;
+
+        if (lightningVFX != null && lightningVFX.HasVector3(lightningDirectionParam))
+        {
+            lightningVFX.SetVector3(lightningDirectionParam, direction);
+        }
+
         CastLaser(startPoint.position, direction);
     }
 
