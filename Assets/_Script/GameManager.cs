@@ -41,8 +41,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);  // ¸ó³õ´º¦s¦b
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -238,4 +245,28 @@ public class GameManager : MonoBehaviour
         SetCanvasGroupVisibility(chargeCompleteCanvas, false);
         chargeCanvasDisplayed = false;
     }
+
+    //private void OnEnable()
+    //{
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    SceneManager.sceneLoaded -= OnSceneLoaded;
+    //}
+
+    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    chargeCompleteCanvas = GameObject.Find("ChargeCompleteCanvas").GetComponent<CanvasGroup>();
+    //    waterLevelDownCanvas = GameObject.Find("WaterLevelDownCanvas").GetComponent<CanvasGroup>();
+    //    playerTouchWaterCanvas = GameObject.Find("PlayerTouchWaterCanvas").GetComponent<CanvasGroup>();
+    //    energyCounterText = GameObject.Find("EnergyCounterText").GetComponent<TextMeshProUGUI>();
+
+    //    SetCanvasGroupVisibility(chargeCompleteCanvas, false);
+    //    SetCanvasGroupVisibility(waterLevelDownCanvas, false);
+    //    SetCanvasGroupVisibility(playerTouchWaterCanvas, false);
+
+    //    UpdateEnergyCounterUI();
+    //}
 }

@@ -57,15 +57,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        //to other scene
+        //1
+        if (other.CompareTag("Gate0") && gameManager.gateChargeMax)
+        {
+            SceneManager.LoadScene("1_Hold");
+        }
         if (other.CompareTag("Gate") && gameManager.gateChargeMax)
         {
             SceneManager.LoadScene("2_Hold2");
+        }
+        //if other 
+        if(other.CompareTag("Gate2") && gameManager.gateChargeMax)
+        {
+            SceneManager.LoadScene("3_UpperDeck_Hatch");
         }
 
         if (other.CompareTag("Climbable"))
         {
             isClimbingZone = true;
         }
+        
     }
 
     public void OnTriggerExit(Collider other)

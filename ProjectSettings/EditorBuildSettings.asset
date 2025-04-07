@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/2_Hold2/2_Hold2.unity
     guid: a05f7bf50e12e974587acf3623b0e302
+  - enabled: 1
+    path: Assets/_Scenes/3_UpperDeck_Hatch/3_UpperDeck_Hatch.unity
+    guid: ed0233cd7b7f464409979dbcd2257e8e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 12d98452590def945a5369b34cc5438e, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 3654eb8cdb71dd54d8dd830e08f5a96e, type: 2}

@@ -16,6 +16,8 @@ TagManager:
   - RECCamera
   - Ground
   - NPC
+  - Gate2
+  - Gate0
   layers:
   - Default
   - TransparentFX

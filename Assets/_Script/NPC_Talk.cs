@@ -110,10 +110,7 @@ public class NPC_Talk : MonoBehaviour
 
     public void EndTalk()
     {
-        if (dialog != null)
-        {
-            dialog.gameObject.SetActive(false);
-        }
+        dialog.gameObject.SetActive(false);
         isTalking = false;
     }
 }
