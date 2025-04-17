@@ -1778,6 +1778,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7582989787671267168, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7918975724043079802, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -1838,6 +1842,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7755932835734168801, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
     - {fileID: 2083153969819598974, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
+    - {fileID: 2564482795642337470, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6003617076927588517, guid: e81f7c6a1359a0b488396e9c5a5ed7b6, type: 3}
       insertIndex: -1
