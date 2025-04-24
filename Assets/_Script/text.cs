@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
+
 public class TextDisplay : MonoBehaviour
 {
     public TextMeshProUGUI textComponent; // TMP ¤¸¥ó
