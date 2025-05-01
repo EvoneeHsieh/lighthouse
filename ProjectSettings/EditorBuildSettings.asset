@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/0_Menu/0_Gamestart.unity
     guid: efd700a42216b5a40ae28511cf17edce
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Text/sto.unity
     guid: 3f26a54721ddb034ba3c4b2ceac66c70
   - enabled: 1
