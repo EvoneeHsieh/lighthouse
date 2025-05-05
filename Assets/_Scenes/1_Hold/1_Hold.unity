@@ -7417,7 +7417,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13154,7 +13154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3510823222909350925, guid: 290600a49f7891c43bee8595d350f0dd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3510823222909350925, guid: 290600a49f7891c43bee8595d350f0dd, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13255,6 +13255,10 @@ PrefabInstance:
     - target: {fileID: 8762966434912503729, guid: 290600a49f7891c43bee8595d350f0dd, type: 3}
       propertyPath: m_Name
       value: tent1500 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762966434912503729, guid: 290600a49f7891c43bee8595d350f0dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8762966434912503729, guid: 290600a49f7891c43bee8595d350f0dd, type: 3}
       propertyPath: m_TagString
@@ -17904,9 +17908,9 @@ Transform:
   m_GameObject: {fileID: 1940870183}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7066679, y: 0.02490736, z: -0.7066681, w: -0.02490736}
-  m_LocalPosition: {x: -53.4628, y: 7.289311, z: 20.32888}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -51.917004, y: 18.936249, z: 23.79634}
+  m_LocalScale: {x: 3.9500003, y: 3.9500003, z: -8.87644}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 497812138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17920,13 +17924,13 @@ ReflectionProbe:
   m_Enabled: 1
   serializedVersion: 2
   m_Type: 0
-  m_Mode: 1
+  m_Mode: 0
   m_RefreshMode: 0
   m_TimeSlicingMode: 0
   m_Resolution: 1024
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 50.3, y: 42.6, z: 19.007788}
-  m_BoxOffset: {x: -10.358288, y: -5.5446243, z: -7.823681}
+  m_BoxSize: {x: 62.093636, y: 70.24133, z: 38.141693}
+  m_BoxOffset: {x: -8.252525, y: -29.229502, z: -11.212421}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -17934,7 +17938,7 @@ ReflectionProbe:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 471
   m_IntensityMultiplier: 2.4
   m_BlendDistance: 78.4
   m_HDR: 1
