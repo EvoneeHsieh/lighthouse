@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/0_Tutorial/0_Tutorial.unity
     guid: a0ae0701724963f46a1c96aa7efab54b
   - enabled: 1
+    path: Assets/_Scenes/Text 2/sto.unity
+    guid: 55f3c4b0346c8df4dbe900d05ae37bbd
+  - enabled: 1
     path: Assets/_Scenes/1_Hold/1_Hold.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1

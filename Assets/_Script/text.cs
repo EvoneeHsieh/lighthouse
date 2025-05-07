@@ -44,11 +44,6 @@ public class TextDisplay : MonoBehaviour
         {
             Debug.Log($"VR 輸入成功捕捉: {talk.action.name}");
         }
-
-        if (dialogues.Length > 0)
-        {
-            StartCoroutine(TypeText(dialogues[currentDialogueIndex]));
-        }
     }
 
     private void Update()

@@ -272,18 +272,11 @@ MonoBehaviour:
   textComponent: {fileID: 545324743}
   fadeCanvasGroup: {fileID: 1655790539}
   fadeDuration: 1.5
+  talk: {fileID: 0}
   nextSceneName: 0_Tutorial
   autoContinue: 0
   autoContinueDelay: 10
-  dialogues:
-  - "\u7CFB\u7D71\u555F\u52D5\u3002\u5149\u6E90\u904B\u884C"
-  - "\u5149\u7167\u7BC4\u570D\uFF1A4.2 \u516C\u5C3A"
-  - "\u906D\u74B0\u5883\u672A\u6A19\u8A18"
-  - "\u91D1\u5C6C\u5730\u677F\u2014\u2014\u8150\u8755\u7387 23%\u3002\u8CA8\u7BB1\u2014\u2014\u72C0\u614B\u4E0D\u660E\u3002\u9580\u2014\u2014\u672A\u958B\u555F"
-  - "\u98A8\u901F\u7570\u5E38\uFF0C\u6D77\u9762\u6CE2\u52D5"
-  - "\u97F3\u6E90\u611F\u6E2C\u2014\u2014\u672A\u77E5\u4FE1\u865F"
-  - "\u4EFB\u52D9\uFF1A\u904B\u884C\u3002\u63A2\u7D22\u3002\u8A18\u9304"
-  - "\u4EFB\u52D9\u57F7\u884C"
+  dialogues: []
 --- !u!1 &660304435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1197,7 @@ MonoBehaviour:
   textComponent: {fileID: 545324743}
   fadeCanvasGroup: {fileID: 1655790539}
   fadeDuration: 1.5
+  talk: {fileID: 0}
   nextSceneName: 
   autoContinue: 0
   autoContinueDelay: 10
