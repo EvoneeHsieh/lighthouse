@@ -1,72 +1,136 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
-
+using UnityEngine.InputSystem;
 
 public class TextDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent; // TMP ¤¸¥ó
-    private string[] dialogues = new string[]
-    {
-        "µL«­ªº¶Â·t¤¤¡A¶È³ÑªºÁn­µ¬O¶¡·²ªº²GÅéºw¸¨¡AºVÀ»µÛª÷Äİ¦aªO",
-        "ª÷Äİ¸I¼²Án¬ğ¦p¨ä¨Ó¡Aµø¨¤²r¦aÂ½Âà¡A¦ñÀH­«À»»Pª«Åé´²¸¨ªºÁnÅT",
-        "Â²µu¤å¦r¨Ì¦¸¯B²{¡G ¡u¨t²Î­«±Ò¤¤¡K¡v",
-        "µø¨¤§C¸G¡A±½´y³fÂdµõ¤f¡A¹s¥ó´²¸¨¡A¶Â·t¤¤°{Ã{·L¥ú",
-        "¬ğµM¡A¤@¹D¥ú¨~¬ï³z¶Â·t¡A·Ó«G¤F«e¤èªº¹D¸ô",
-        "§A¬O½Ö¡H¬°¤°»ò·|¥X²{¦b³o¸Ì¡H³o¸Ì¤w¸g«Ü¤[¨S¦³¤H¨Ó¹L¤F¡K¡K",
-    };
+    public TextMeshProUGUI textComponent;
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration = 1.5f;
+    public InputActionReference talk;
 
-    private int currentDialogueIndex = 0; // ·í«eªº¹ï¸Ü¯Á¤Ş
-    private bool isTyping = false; // ±±¨î¬O§_¥¿¦b¥´¦r
+    [Header("å ´æ™¯åˆ‡æ›è¨­å®š")]
+    public string nextSceneName;
+    public bool autoContinue = false;
+    public float autoContinueDelay = 10f;
+
+    [Header("æ–‡æœ¬å…§å®¹")]
+    public string[] dialogues;
+
+    private int currentDialogueIndex = 0;
+    private bool isTyping = false;
 
     private void Start()
     {
+      //  fadeCanvasGroup.alpha = 0; // ğŸ”¹ åˆå§‹å®Œå…¨é€æ˜
+       // StartCoroutine(FadeIn()); // ğŸ”¹ è‡ªå‹•é–‹å§‹æ·¡å…¥ï¼Œä¸ç¶å®šæŒ‰éµ
+
         if (dialogues.Length > 0)
         {
-            Debug.Log($"Åã¥Ü²Ä¤@¬q¤å¦r: {dialogues[currentDialogueIndex]}");
-            StartCoroutine(TypeText(dialogues[currentDialogueIndex])); // Åã¥Ü²Ä¤@¬q¤å¦r
+            StartCoroutine(TypeText(dialogues[currentDialogueIndex]));
         }
         else
         {
-            Debug.LogError("Dialogues °}¦C¬°ªÅ¡I");
+            Debug.LogError("Dialogues é™£åˆ—ç‚ºç©ºï¼");
+        }
+
+        if (autoContinue)
+        {
+            StartCoroutine(AutoSwitchScene());
+        }
+        if (talk != null && talk.action != null)
+        {
+            Debug.Log($"VR è¼¸å…¥æˆåŠŸæ•æ‰: {talk.action.name}");
+        }
+
+        if (dialogues.Length > 0)
+        {
+            StartCoroutine(TypeText(dialogues[currentDialogueIndex]));
         }
     }
 
     private void Update()
     {
-        // ÀË´ú·Æ¹«¥ªÁä«ö¤U
-        if (Input.GetMouseButtonDown(0)) // 0 ¥Nªí·Æ¹«¥ªÁä
+        if (Input.GetMouseButtonDown(0))
         {
             ShowNextDialogue();
+        }
+        if (talk.action.WasPressedThisFrame())
+        {
+            Debug.Log("XR æ§åˆ¶å™¨æŒ‰éµè¢«è§¸ç™¼ï¼");
+        }
+        if (talk.action.WasPressedThisFrame())
+        {
+            Debug.Log($"VR æ§åˆ¶å™¨æŒ‰éµè¢«è§¸ç™¼ï¼è¼¸å…¥å‹•ä½œ: {talk.action.activeControl}");
+        }
+        if (talk.action.WasPressedThisFrame())
+        {
+            Debug.Log($"VR æ§åˆ¶å™¨è¼¸å…¥æˆåŠŸï¼š{talk.action.name}ï¼Œç¶å®šçš„å‹•ä½œï¼š{talk.action.activeControl}");
         }
     }
 
     public void ShowNextDialogue()
     {
-        // ÀË¬d¬O§_ÁÙ¦³¤U¤@¬q¤å¦r
         if (!isTyping && currentDialogueIndex < dialogues.Length - 1)
         {
-            currentDialogueIndex++; // ²¾¨ì¤U¤@¬q
-            StartCoroutine(TypeText(dialogues[currentDialogueIndex])); // ±Ò°Ê¥´¦r®ÄªG
+            currentDialogueIndex++;
+            StartCoroutine(TypeText(dialogues[currentDialogueIndex]));
         }
-        else if (!isTyping)
+        else if (!isTyping && currentDialogueIndex == dialogues.Length - 1)
         {
-            Debug.Log("¤w¸gÅã¥Ü§¹©Ò¦³¹ï¸Ü¡I");
+            Debug.Log("å°è©±å·²å®Œæˆï¼Œé–‹å§‹é€€å ´...");
+            StartCoroutine(FadeOutAndSwitchScene()); // åªæœ‰æ–‡æœ¬å…¨éƒ¨é¡¯ç¤ºå®Œç•¢æ‰æ·¡å‡º
         }
     }
 
     private IEnumerator TypeText(string text)
     {
         isTyping = true;
-        textComponent.text = ""; // ²MªÅ¤å¦r
+        textComponent.text = "";
         foreach (char letter in text)
         {
-            textComponent.text += letter; // ³v¦rÅã¥Ü
-            yield return new WaitForSeconds(0.05f); // ±±¨î¥´¦r³t«×
+            textComponent.text += letter;
+            yield return new WaitForSeconds(0.05f);
         }
         isTyping = false;
     }
+
+    private IEnumerator FadeIn()
+    {
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(0, 1, t / fadeDuration); // ğŸ”¹ è®“å ´æ™¯å¾é»‘æ…¢æ…¢è®Šäº®
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeOutAndSwitchScene()
+    {
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(1, 0, t / fadeDuration); // ğŸ”¹ æ·¡å‡ºè‡³å…¨é»‘
+            yield return null;
+        }
+
+        SceneManager.LoadScene(nextSceneName);
+    }
+
+    private IEnumerator AutoSwitchScene()
+    {
+        yield return new WaitForSeconds(autoContinueDelay);
+        SceneManager.LoadScene(nextSceneName);
+    }
 }
+
+
+
+
 
 
 
